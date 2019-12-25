@@ -1,0 +1,63 @@
+12月24日
+上午：
+pycharm安装以及python3.7的安装
+python基础语法和变量（简单讲解）
+python介绍及发展历史
+python是解释型、交互式、面向对象、初学者的语言
+
+在变量中：
+""没有标识符代表public(即前面不加东西)
+"_"代表protected
+"__"代表private
+下午：
+	python基础语法和变量
+
+数据类型：
+number
+string
+list
+tuple（元祖）
+dictionary（字典）
+
+数字类型:
+int
+long
+float
+complex
+
+运算符
+
+算数运算符
+** 幂
+% 取模
+// 取整除
+
+（其他与常规相同）
+
+比较运算符(与常规相同)
+
+赋值运算符（算数运算符+等号）
+
+位运算符（只做了解）
+&
+
+
+
+逻辑运算符
+and (取后面）
+or（取前面）
+not
+
+成员运算符
+in 是里面的成员
+not in
+
+身份运算符
+is 判断引用是否相同
+is not 
+
+
+	python基础知识
+
+对各种类型的操作
+python数学函数
