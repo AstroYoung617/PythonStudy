@@ -1,0 +1,164 @@
+上午：
+python函数、模块、IO及异常：
+python函数：
+以def开头
+
+常用函数：
+Sorted（排序函数）
+print("-------------排序：sorted函数------------")
+li=[13,234,1213,23,12,3342,213]
+
+def sortedTest(li):
+    return li
+print(sorted(li,key=sortedTest,reverse=True))
+
+Map（映射函数）
+print("------------------映射：map函数------------------")
+li2=[1,2,3,4,5,6,7,8]
+
+def mapTest(x):
+    return x*x
+print(list(map(mapTest,li2)))
+
+Filter（过滤器）
+print("-----------------过滤器:filter函数----------------")
+li4=[15,354,84,241,56,7,152,478]
+
+def filterTest(li):
+    z=lambda x:x <=200 and x%2 ==0
+    f=filter(z,li)
+    return list(f)
+print(filterTest(li4))
+
+可更改和不可更改对象：
+值传递（数字、字符串、元组）
+值传递（数字、字符串、元组）相当于只对副本做了修改,对其值本身未作修改
+引用传递（数组、列表）
+引用传递（数组、列表）会修改其引用的数据
+
+作用域：
+print("-------------作用域概念-------------")
+total =0
+#total为全局变量
+def computer(var1,var2,var3):#var1,var2,var3为局部变量
+    sum=var1+var2+var3
+    jian=var1-var2-var3
+    mul = var1*var2*var3
+    div=var1/var2/var3
+    return sum,jian,mul,div
+
+def computer2():
+    print(total)
+    #print(var1,var2,var3)
+
+闭包：
+def printHello(str): #自由变量
+    def print2(str2): #内嵌函数
+        return str + str2
+    return print2#返回了内嵌函数
+
+python模块：
+_init_.py
+1.表示当前文件是一个包，不会影响代码的执行
+2.创建一个当前包的全局变量
+
+python文件IO：
+r,w,a   r+可读可写,w+可写可读,a+可追加可读
+只有a , a+ ,w , w+可以创建文件
+def fileRead():#第一种方式
+    file=open("test/test.txt",mode="r",encoding="utf-8")
+    data= file.read()
+    print(data)
+    file.close()#关闭文件，清理掉
+#fileRead()
+
+def fileRead2():#第二种方式，不需要close会自动清理掉
+    try:#异常处理，可读性更强一些
+        with open("test/test.txt",mode="r",encoding="utf-8") as file:
+            data = file.read()
+            print(data)
+    except:#捕获异常
+        print("文件找不到")
+    finally:#最终执行代码块，不管是否出现异常都会进行执行
+        print("最终执行")
+fileRead2()
+
+def writeFile():#如果文件不存在，则会自动生成该文件，并将内容写入
+    with open("test/test.txt",mode="w",encoding="utf-8") as file:
+        file.write("你好，西华")
+
+#writeFile()
+
+def appendFile():#追加在文件的后面
+    with open("test/test.txt",mode="a",encoding="utf-8") as file:
+        file.write("你好，成都")
+
+python异常：
+运行时异常，代码可以解决，可以进行处理
+退栈溢出，内存溢出是一种错误，代码解决不了
+def fileRead2():#第二种方式，不需要close会自动清理掉
+    try:#异常处理，可读性更强一些
+        with open("test/test.txt",mode="r",encoding="utf-8") as file:
+            data = file.read()
+            print(data)
+    except:#捕获异常
+        print("文件找不到")
+    finally:#最终执行代码块，不管是否出现异常都会进行执行
+        print("最终执行")
+fileRead2()
+
+下午：
+python面向对象：
+类变量、实例变量、类方法、实例方法：
+class Employee(object):
+    employCount = 100 #类变量
+    def __init__(self,username,money): #构造器
+        self.username = username
+        self.money = money
+        self.employCount += 100
+
+    def printEmploy(self): #实例方法（self代表一个类的实例）
+        print("职员号：",self.employCount,"职员姓名：",self.username,"职员薪水：",self.money)
+
+    def __eq__(self, o: object) -> bool:
+        return super().__eq__(o)
+
+    def __str__(self) -> str: #重写的方法
+        return super().__str__()
+
+继承方法并重写以及多重继承的应用：
+#多重继承的应用
+class Student(User,Person):
+    def __init__(self,username,userage,usersex,phone,address):
+        #self.username = username
+        #self.userage = userage
+        #self.usersex = usersex
+        User.__init__(self,username,userage,usersex)#调用父类的构造器
+        Person.__init__(self,phone,address)#调用父类的构造器
+
+    def printUser(self):#重写方法
+        super().printUser()
+
+类属性与方法
+class Teacher():
+    username = "张老师" #public
+    _age = "35" #protected
+    __money = 8000 #private
+
+    def printUserName(self):
+        print("姓名：",self.username)
+        self.__printMoney()
+    def _printAge(self):
+        print("年龄：",self._age)
+        self.__printMoney()
+    def __printMoney(self):
+        print("薪水：",self.__money)
+
+t=Teacher() #实例不能调用它的私有变量
+print(t.username)
+print(t._age)
+#print(t.__money)
+t.printUserName()
+t._printAge()
+#t.__printMoney() 可以用
+
