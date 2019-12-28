@@ -1,0 +1,5 @@
+1、导入 pymysql（DB-API） 调用其接口来访问数据库
+2、建立与mysql数据库的连接（url,username,password,database）
+3、获取游标对象（执行crud[增删改查]）
+4、关闭连接 - 释放内存（dont forget）
+
